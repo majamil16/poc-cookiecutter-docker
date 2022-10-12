@@ -13,6 +13,7 @@ repos:
     rev: v2.33.0
     hooks:
     -   id: commitizen
+        stages: [commit-msg]
     # -   id: commitizen-branch
     #     stages: [push]
 -   repo: local

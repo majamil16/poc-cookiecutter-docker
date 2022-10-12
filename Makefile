@@ -46,9 +46,10 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+## Lint using black, pulint
 lint:
-	flake8 src
+	black src tests
+	pylint src tests
 
 ## Upload Data to S3
 sync_data_to_gcs:
@@ -116,10 +117,6 @@ init_repo: #init_environment
 ## Test python environment is setup correctly
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
-
-lint:
-	pylint
-	black
 
 build:
 	docker build . -f ./docker/Dockerfile  -t  "my_model:$(date +'%m-%d-%y')"
