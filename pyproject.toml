@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "poc-cookiecutter-docker"
+version = "0.1.0"
+description = ""
+authors = ["Maja <38793515+majamil16@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "poc_cookiecutter_docker"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "0.5.1"
+pandas = "^1.5.0"
+sklearn = "^0.0"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.15.4"
+Sphinx = "^5.2.3"
+commitizen = "^2.35.0"
+pre-commit = "^2.20.0"
+pytest = "^7.1.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
