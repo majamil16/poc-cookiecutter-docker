@@ -119,7 +119,7 @@ test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
 
 build:
-	docker build . -f ./docker/Dockerfile  -t  "my_model:$(date +'%m-%d-%y')"
+	docker build . -f ./docker/Dockerfile  -t  "my_model:$(shell date +'%m-%d-%y')"
 
 # todo store the date
 test: build
