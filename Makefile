@@ -11,11 +11,6 @@ PROJECT_NAME = poc-cookiecutter-docker
 PYTHON_INTERPRETER = python3
 PYTHON_VERSION=3.9.10
 
-# ifeq (,$(shell which conda))
-# HAS_CONDA=False
-# else
-# HAS_CONDA=True
-# endif
 ifeq (,$(shell which pyenv))
 HAS_PYENV=False
 else
@@ -121,6 +116,17 @@ init_repo: #init_environment
 ## Test python environment is setup correctly
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
+
+lint:
+	pylint
+	black
+
+build:
+	docker build . -f ./docker/Dockerfile  -t  "my_model:$(date +'%m-%d-%y')"
+
+# todo store the date
+test: build
+	docker run -it my_model:10-12-22  pytest
 
 #################################################################################
 # PROJECT RULES                                                                 #

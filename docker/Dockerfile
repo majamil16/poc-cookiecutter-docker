@@ -5,8 +5,15 @@ COPY ../requirements.txt /src/
 RUN pip install -r requirements.txt
 
 # copy the src
-RUN mkdir src tests
-COPY ../src ./src
-COPY ../tests ./tests
+# RUN mkdir src tests
+# COPY ../ .
+COPY ../src .
+COPY ../tests .
 
-RUN python tests/test_model.py
+
+FROM build as test
+ENV PYTHONPATH=/src
+WORKDIR /src
+COPY ../requirements-dev.txt .
+RUN pip install -r requirements-dev.txt
+RUN pytest

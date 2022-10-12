@@ -17,13 +17,19 @@ repos:
     #     stages: [push]
 -   repo: local
     hooks:
-    -   id: run-poetry
-        name: run-poetry
+    -   id: export-poetry
+        name: Export requirements.txt
         language: system
         entry: bash -c  "poetry export -f requirements.txt -o requirements.txt"
+    -   id: export-poetry-dev
+        name: Export dev dependencies
+        language: system
+        entry: bash -c  "poetry export -f requirements.txt -o requirements-dev.txt  --with=dev"
     -   id: black
         name: black
+        entry: black
         language: system
-        entry: bash -c  "black --include *.py"
+        types: [ python ]
+        files: ^(src/|tests/)
     # -   id: poetry-export # generate a requirements.txt file from the pyproject.toml
         # args: ["-f", "requirements.txt", "-o", "requirements.txt"]

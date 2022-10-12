@@ -1,0 +1,12 @@
+docs/
+notebooks/
+references/
+reports/
+LICENSE
+Makefile
+poetry.lock
+poetry.toml
+pyproject.toml
+README.md
+tox.ini
+test_environment.py
